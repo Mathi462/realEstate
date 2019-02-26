@@ -1,0 +1,190 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "real": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "css"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/real",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/css/color/color-1.css",
+              "src/css/animate.min.css",
+              "src/css/bootsnav.css",
+              "src/css/bootstrap.min.css",
+              "src/css/bootstrap-select.min.css",
+              "src/css/cubeportfolio.min.css",
+              "src/css/datepicker.css",
+              "src/css/dropzone.min.css",
+              "src/css/font-awesome.min.css",
+              "src/css/idea_homes_icons.css",
+              "src/css/invoice.css",
+              "src/css/jquery.death.css",
+              "src/css/jquery.fancybox.min.css",
+              "src/css/landing-page-fonts.css",
+              "src/css/owl.carousel.css",
+              "src/css/owl.transitions.css",
+              "src/css/range-Slider.min.css",
+              "src/css/settings.css",
+              "src/css/style.css",
+              "src/css/timeline.css"
+            ],
+            "scripts": [
+              "src/js/bootsnav.js",
+              "src/js/bootstrap-select.js",
+              "src/js/contact.js",
+              "src/js/cubeportfolio.min.js",
+              "src/js/custom-map.js",
+              "src/js/datepicker.js",
+              "src/js/death.min.js",
+              "src/js/dropzone.min.js",
+              "src/js/form.js",
+              "src/js/functions.js",
+              "src/js/gmaps.js",
+              "src/js/invoice.js",
+              "src/js/invoice2.js",
+              "src/js/jquery-3.2.1.min.js",
+              "src/js/jquery-countTo.js",
+              "src/js/jquery.appear.js",
+              "src/js/jquery.fancybox.min.js",
+              "src/js/jquery.typewriter.js",
+              "src/js/owl.carousel.min.js",
+              "src/js/parallaxie.js",
+              "src/js/range-Slider.min.js",
+              "src/js/scrollreveal.min.js",
+              "src/js/selectbox-0.2.min.js",
+              "src/js/themepunch/jquery.themepunch.revolution.min.js",
+              "src/js/themepunch/jquery.themepunch.tools.min.js",
+              "src/js/themepunch/revolution.extension.layeranimation.min.js",
+              "src/js/themepunch/revolution.extension.navigation.min.js",
+              "src/js/themepunch/revolution.extension.parallax.min.js",
+              "src/js/themepunch/revolution.extension.slideanims.min.js",
+              "src/js/themepunch/revolution.extension.video.min.js",
+              "src/js/videobox/video.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "real:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "real:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "real:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "real-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "real:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "real:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "real"
+}
